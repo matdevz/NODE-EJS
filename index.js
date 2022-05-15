@@ -5,41 +5,16 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-let usersInfo = [
-    {
-        id: 0,
-        name: 'Mateus',
-        age: 17,
-    },
-    {
-        id: 1,
-        name: 'Paula',
-        age: 25,
-    },
-    {
-        id: 2,
-        name: 'Paulo',
-        age: 28,
-    },
-    {
-        id: 3,
-        name: 'Pedro',
-        age: 16,
-    },
-    {
-        id: 4,
-        name: 'Carla',
-        age: 18,
-    },
-    {
-        id: 5,
-        name: 'Carlo',
-        age: 15,
-    },
-];
+app.use('/public', express.static('public'));
 
 app.get('/', (req, res) => {
-    res.render('user', { users: usersInfo });
+    res.render('home');
+});
+app.get('/services', (req, res) => {
+    res.render('services');
+});
+app.get('/about', (req, res) => {
+    res.render('about');
 });
 
-app.listen(3000);
+app.listen(3001);
